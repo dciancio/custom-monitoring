@@ -1,0 +1,21 @@
+apiVersion: v1
+data:
+  datasources.yaml: |-
+    apiVersion: 1
+    datasources:
+      - name: "OCP Prometheus"
+        type: prometheus
+        access: proxy
+        url: http://prometheus-operated.prometheus-operator.svc:9090
+        basicAuth: false
+        withCredentials: false
+        isDefault: true
+        jsonData:
+            tlsSkipVerify: true
+            "httpHeaderName1": "Authorization"
+        secureJsonData:
+            "httpHeaderValue1": "Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6IiJ9.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJncmFmYW5hIiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9zZWNyZXQubmFtZSI6ImdyYWZhbmEtdG9rZW4tOG5jazYiLCJrdWJlcm5ldGVzLmlvL3NlcnZpY2VhY2NvdW50L3NlcnZpY2UtYWNjb3VudC5uYW1lIjoiZ3JhZmFuYSIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50LnVpZCI6IjYwMDliNWVmLTk2MzQtMTFlYS1hN2YzLTAyMzc0NDdhOWYyNCIsInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDpncmFmYW5hOmdyYWZhbmEifQ.ZzXtfTwjPaVmuBg_1EXYLvb-m-nbX8EOQcLu7ca9Rew7pYESVpRoOOu6TtdBX6FyaP7xOGtJWmz8GS0SvepSuJlJQsW6knOg0dllFt65ZV88jxEth9_hOdS9q-Yg5EGHojeoKIqOIkGCLK1IW3U-yRvJCxBNAPSH8hbGSFh03a0Di1o78k2N9NO6_z4Nan55kLIH9yLfifQO9uTTglOJtFcs4xgp3BlSoqCUebjS17KsnlQD7kQlt290YjvV6awe0-St85q1zE4_uPyUnfWrH-f1vxmJUtyztQLH1niUeIOc_H5gjN480zmmFLa9huQgEDu7UXUE-oh-kcaBrtSvSQ"
+kind: ConfigMap
+metadata:
+  name: grafana-datasources
+  namespace: grafana

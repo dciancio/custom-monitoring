@@ -1,0 +1,19 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  labels:
+    k8s-app: os-sample-python-monitor
+  name: os-sample-python-monitor
+  namespace: egress-test
+spec:
+  endpoints:
+    - interval: 30s
+      path: /metrics
+      port: 8080-tcp
+  namespaceSelector:
+    matchNames:
+      - egress-test
+  selector:
+    matchLabels:
+      app: os-sample-python
+
